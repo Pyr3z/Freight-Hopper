@@ -22,10 +22,8 @@ public class UserInput : MonoBehaviour
     public event PressEventHandler GroundPoundCanceled;
 
     public bool GroundPoundHeld => groundPoundHeld;
-    public bool JumpHeld => jumpHeld;
 
     [ReadOnly, SerializeField] private bool groundPoundHeld;
-    [ReadOnly, SerializeField] private bool jumpHeld;
     void Awake()
     {
         input = this;
@@ -93,11 +91,7 @@ public class UserInput : MonoBehaviour
 
     private void JumpPressed(InputAction.CallbackContext _)
     {
-        jumpHeld = !jumpHeld;
-        if (jumpHeld)
-        {
-            JumpInput?.Invoke();
-        }
+        JumpInput?.Invoke();
     }
 
     private void JumpReleased(InputAction.CallbackContext _)

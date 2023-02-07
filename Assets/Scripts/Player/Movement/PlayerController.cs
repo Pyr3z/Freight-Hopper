@@ -138,12 +138,6 @@ public class PlayerController : MonoBehaviour
         // Moving ========================================================
         movementBehavior.Action();
 
-        // Jump Holding ========================================================
-        if (UserInput.Instance.JumpHeld && !jumpedThisFrame)
-        {
-            JumpsStartLogic();
-        }
-        
         // Applying Abilities Constantly ========================================================
         // Applying Ground Pound
         if (groundPoundBehavior.Active)
@@ -215,13 +209,6 @@ public class PlayerController : MonoBehaviour
             (!wallBehaviors.FrontObstructed || UserInput.Instance.Move().z < 0.6))
         {
             wallBehaviors.WallClimbExit();
-        }
-
-        // Wall Jump Exit Logic ========================================================
-        if (wallBehaviors.JumpActive &&
-            (!wallBehaviors.jumpHoldingTimer.TimerActive() || !UserInput.Instance.JumpHeld))
-        {
-            wallBehaviors.JumpExit();
         }
 
         // Reset Values ========================================================
